@@ -23,7 +23,8 @@ public class MateriaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Materia> actualizar(@PathVariable Long id, @RequestBody Materia m) {
-        return service.obtainPorId(id).map(existente -> {
+        // Corrección aquí: se cambió service.obtainPorId por service.obtenerPorId
+        return service.obtenerPorId(id).map(existente -> {
             existente.setNombre(m.getNombre());
             existente.setProfesor(m.getProfesor());
             return ResponseEntity.ok(service.guardar(existente));
