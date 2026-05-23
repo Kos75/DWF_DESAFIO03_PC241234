@@ -108,7 +108,7 @@ body:has(.login-container) {
   flex-shrink: 0;
 }
 
-.login-card {
+.login-card, .auth-card {
   background: rgba(255,255,255,0.98);
   width: 100%;
   max-width: 420px;
@@ -120,7 +120,7 @@ body:has(.login-container) {
 }
 
 /* Brand mark */
-.login-card::before {
+.login-card::before, .auth-card::before {
   content: '';
   display: block;
   width: 48px;
@@ -136,7 +136,7 @@ body:has(.login-container) {
   to   { opacity: 1; transform: translateY(0)   scale(1);    }
 }
 
-.login-card h2 {
+.login-card h2, .auth-card h2 {
   font-size: 1.7rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -147,13 +147,13 @@ body:has(.login-container) {
   margin-bottom: 0.4rem;
 }
 
-.login-card > p {
+.login-card > p, .auth-card > p {
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-top: 1.5rem;
 }
 
-.login-card .link {
+.login-card .link, .auth-card .link {
   color: var(--primary);
   font-weight: 600;
   cursor: pointer;
@@ -161,7 +161,7 @@ body:has(.login-container) {
   text-underline-offset: 2px;
 }
 
-.login-card .link:hover { color: var(--accent); }
+.login-card .link:hover, .auth-card .link:hover { color: var(--accent); }
 
 .error-msg {
   background: var(--danger-bg);
