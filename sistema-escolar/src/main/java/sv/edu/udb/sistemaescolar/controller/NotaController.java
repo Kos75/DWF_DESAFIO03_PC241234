@@ -3,30 +3,30 @@ package sv.edu.udb.sistemaescolar.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sv.edu.udb.sistemaescolar.entity.Alumno;
-import sv.edu.udb.sistemaescolar.service.AlumnoService;
+import sv.edu.udb.sistemaescolar.entity.Nota;
+import sv.edu.udb.sistemaescolar.service.NotaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/alumnos")
-public class AlumnoController {
-    @Autowired private AlumnoService service;
+@RequestMapping("/api/notas")
+public class NotaController {
+    @Autowired private NotaService service;
 
-    @GetMapping public List<Alumno> listar() { return service.obtenerTodos(); }
+    @GetMapping public List<Nota> listar() { return service.obtenerTodas(); }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Alumno> buscar(@PathVariable Long id) {
+    public ResponseEntity<Nota> buscar(@PathVariable Long id) {
         return service.obtenerPorId(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping public Alumno crear(@RequestBody Alumno a) { return service.guardar(a); }
+    @PostMapping public Nota crear(@RequestBody Nota n) { return service.guardar(n); }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Alumno> actualizar(@PathVariable Long id, @RequestBody Alumno a) {
+    public ResponseEntity<Nota> actualizar(@PathVariable Long id, @RequestBody Nota n) {
         return service.obtenerPorId(id).map(existente -> {
-            existente.setNombre(a.getNombre());
-            existente.setApellido(a.getApellido());
-            existente.setMaterias(a.getMaterias());
+            existente.setAlumno(n.getAlumno());
+            existente.setMateria(n.getMateria());
+            existente.setCalificacion(n.getCalificacion());
             return ResponseEntity.ok(service.guardar(existente));
         }).orElse(ResponseEntity.notFound().build());
     }
