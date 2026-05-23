@@ -62,7 +62,8 @@ body {
 /* ==========================================
    AUTH SCREEN  (login-container + login-card)
    ========================================== */
-.login-container {
+.login-container,
+.auth-wrapper {
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -75,17 +76,17 @@ body {
     var(--gradient-header),
     radial-gradient(ellipse at 25% 15%, rgba(168,85,247,0.28) 0%, transparent 50%),
     radial-gradient(ellipse at 75% 85%, rgba(99,102,241,0.22) 0%, transparent 50%);
-  /* Ensure it paints over the default body bg */
   position: relative;
   z-index: 0;
 }
 
-/* Also paint the body itself when on the login screen so no gap shows */
-body:has(.login-container) {
+body:has(.login-container),
+body:has(.auth-wrapper) {
   background: #1e1b4b;
 }
 
-.login-container > h1 {
+.login-container > h1,
+.auth-wrapper > h1 {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -99,7 +100,9 @@ body:has(.login-container) {
 }
 
 .login-container > h1::before,
-.login-container > h1::after {
+.login-container > h1::after,
+.auth-wrapper > h1::before,
+.auth-wrapper > h1::after {
   content: '';
   display: block;
   width: 40px;
